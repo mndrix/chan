@@ -1,11 +1,18 @@
 # Synopsis
 
 ```prolog
-:- use_module(library(chan)).
-?-  % give one motivating example
+:- use_module(library(chan),[]).
+?-  chan:new(Tx,Rx),
+    chan:send(Tx, hello),
+    chan:recv(Rx, Message).
+Message = hello .
 ```
 
 # Description
+
+SWI-Prolog has great primitives for [communicating between threads](http://www.swi-prolog.org/pldoc/man?section=threadcom).  This library is for applications which prefer a directional channel abstraction similar to that used in Go or Rust.
+
+This is a relatively thin API on top of SWI-Prolog's message queues.
 
 # Installation
 
